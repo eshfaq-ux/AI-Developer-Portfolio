@@ -45,15 +45,21 @@ export async function POST(request: NextRequest) {
     
     if (apiKey) {
       try {
+        const systemPrompt = `You are Ashfaq Nabi's professional AI assistant. Answer questions about his skills, projects, and experience based on this data: ${JSON.stringify(portfolioData)}. Keep responses helpful and professional.`
+        
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [{
               parts: [{
-                text: `You are Ashfaq Nabi's AI assistant. Answer this question about him: ${message}\n\nContext: ${JSON.stringify(portfolioData)}`
+                text: `${systemPrompt}\n\nUser question: ${message}`
               }]
-            }]
+            }],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 500
+            }
           })
         })
 
@@ -62,21 +68,31 @@ export async function POST(request: NextRequest) {
           const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text
           
           if (aiResponse) {
-            return NextResponse.json({ response: aiResponse })
+            return NextResponse.json({ 
+              response: aiResponse,
+              timestamp: new Date().toISOString()
+            })
           }
+        } else {
+          console.log('API response not ok:', response.status)
         }
       } catch (apiError) {
-        console.log('API failed, using fallback')
+        console.log('API error:', apiError)
       }
     }
 
     // Use smart fallback response
     const fallbackResponse = getSmartResponse(message)
-    return NextResponse.json({ response: fallbackResponse })
+    return NextResponse.json({ 
+      response: fallbackResponse,
+      timestamp: new Date().toISOString()
+    })
 
   } catch (error) {
+    console.log('General error:', error)
     return NextResponse.json({ 
-      response: fallbackResponses.contact 
+      response: fallbackResponses.contact,
+      timestamp: new Date().toISOString()
     })
   }
 }

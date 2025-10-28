@@ -81,15 +81,18 @@ export default function AIChatbot() {
 
       const data = await response.json()
       
+      // Use the correct response field
+      const aiMessage = data.response || data.message || 'Sorry, I could not process your request.'
+      
       // Realistic typing delay based on response length
-      const typingDelay = Math.min(Math.max(data.message.length * 20, 800), 2500)
+      const typingDelay = Math.min(Math.max(aiMessage.length * 20, 800), 2500)
       
       setTimeout(() => {
         setIsTyping(false)
         setMessages(prev => [...prev, {
           role: 'assistant',
-          content: data.message,
-          timestamp: data.timestamp,
+          content: aiMessage,
+          timestamp: new Date().toISOString(),
           intent: data.intent,
           suggestions: data.suggestions
         }])
