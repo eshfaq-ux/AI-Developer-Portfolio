@@ -74,8 +74,7 @@ export default function AIChatbot() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: [...messages, userMessage],
-          sessionId
+          message: content
         })
       })
 

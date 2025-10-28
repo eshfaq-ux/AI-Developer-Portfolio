@@ -35,6 +35,7 @@ function getSmartResponse(message: string): string {
 export async function POST(request: NextRequest) {
   try {
     const { message } = await request.json()
+    console.log('Received message:', message)
     
     if (!message) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 })
@@ -42,12 +43,14 @@ export async function POST(request: NextRequest) {
 
     // Try Google AI API first
     const apiKey = process.env.GOOGLE_AI_API_KEY
+    console.log('API Key exists:', !!apiKey)
     
     if (apiKey) {
       try {
         const systemPrompt = `You are Ashfaq Nabi's professional AI assistant. Answer questions about his skills, projects, and experience based on this data: ${JSON.stringify(portfolioData)}. Keep responses helpful and professional.`
         
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+        console.log('Making API call to Gemini...')
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -63,18 +66,23 @@ export async function POST(request: NextRequest) {
           })
         })
 
+        console.log('API Response status:', response.status)
+        
         if (response.ok) {
           const data = await response.json()
+          console.log('API Response data:', data)
           const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text
           
           if (aiResponse) {
+            console.log('Returning AI response:', aiResponse.substring(0, 100) + '...')
             return NextResponse.json({ 
               response: aiResponse,
               timestamp: new Date().toISOString()
             })
           }
         } else {
-          console.log('API response not ok:', response.status)
+          const errorText = await response.text()
+          console.log('API Error:', response.status, errorText)
         }
       } catch (apiError) {
         console.log('API error:', apiError)
@@ -82,6 +90,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Use smart fallback response
+    console.log('Using fallback response')
     const fallbackResponse = getSmartResponse(message)
     return NextResponse.json({ 
       response: fallbackResponse,
