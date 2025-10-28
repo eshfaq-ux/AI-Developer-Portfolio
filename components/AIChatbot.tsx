@@ -103,7 +103,7 @@ export default function AIChatbot() {
       setIsTyping(false)
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'I apologize for the technical difficulty. Please try again or contact Ashfaq directly at ashfaqnabi@gmail.com for immediate assistance.',
+        content: 'Hi! I can help you learn about Ashfaq\'s skills, projects, and experience. You can also contact him directly at eshfaqnabi11@gmail.com for immediate assistance.',
         timestamp: new Date().toISOString()
       }])
       setIsLoading(false)
