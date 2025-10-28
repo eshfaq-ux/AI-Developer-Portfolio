@@ -78,6 +78,10 @@ export default function AIChatbot() {
         })
       })
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
       const data = await response.json()
       
       // Use the correct response field
@@ -100,6 +104,7 @@ export default function AIChatbot() {
       }, typingDelay)
 
     } catch (error) {
+      console.error('Chatbot error:', error)
       setIsTyping(false)
       setMessages(prev => [...prev, {
         role: 'assistant',
