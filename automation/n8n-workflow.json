@@ -1,0 +1,190 @@
+{
+  "name": "Portfolio Auto-Update Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "portfolio-update",
+        "responseMode": "onReceived"
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.notion.com/v1/databases/YOUR_DATABASE_ID/query",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Notion-Version",
+              "value": "2022-06-28"
+            }
+          ]
+        }
+      },
+      "name": "Fetch Notion Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Transform Notion data to portfolio format\nconst notionData = $input.first().json;\nconst projects = [];\n\nfor (const page of notionData.results) {\n  const properties = page.properties;\n  \n  projects.push({\n    id: projects.length + 1,\n    title: properties.Title?.title[0]?.plain_text || '',\n    description: properties.Description?.rich_text[0]?.plain_text || '',\n    tech: properties.Technologies?.multi_select?.map(t => t.name) || [],\n    impact: properties.Impact?.rich_text[0]?.plain_text || '',\n    github: properties.GitHub?.url || '',\n    demo: properties.Demo?.url || '',\n    featured: properties.Featured?.checkbox || false\n  });\n}\n\nreturn { projects };"
+      },
+      "name": "Transform Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/YOUR_USERNAME/portfolio/contents/data/portfolio.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        }
+      },
+      "name": "Get Current Portfolio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge new projects with existing portfolio data\nconst currentData = JSON.parse(Buffer.from($input.first().json.content, 'base64').toString());\nconst newProjects = $input.all()[0].json.projects;\n\ncurrentData.projects = newProjects;\n\nreturn {\n  content: Buffer.from(JSON.stringify(currentData, null, 2)).toString('base64'),\n  message: 'Auto-update portfolio projects',\n  sha: $input.first().json.sha\n};"
+      },
+      "name": "Prepare Update",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/YOUR_USERNAME/portfolio/contents/data/portfolio.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "httpMethod": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.message }}"
+            },
+            {
+              "name": "sha",
+              "value": "={{ $json.sha }}"
+            }
+          ]
+        }
+      },
+      "name": "Update Portfolio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.vercel.com/v1/integrations/deploy/YOUR_DEPLOYMENT_HOOK",
+        "httpMethod": "POST"
+      },
+      "name": "Trigger Deployment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1560, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Notion Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Notion Data": {
+      "main": [
+        [
+          {
+            "node": "Transform Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Data": {
+      "main": [
+        [
+          {
+            "node": "Get Current Portfolio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Current Portfolio": {
+      "main": [
+        [
+          {
+            "node": "Prepare Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Update": {
+      "main": [
+        [
+          {
+            "node": "Update Portfolio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Portfolio": {
+      "main": [
+        [
+          {
+            "node": "Trigger Deployment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

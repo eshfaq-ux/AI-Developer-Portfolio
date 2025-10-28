@@ -1,0 +1,129 @@
+{
+  "personal": {
+    "name": "Ashfaq Nabi",
+    "title": "Full Stack Developer & AI Developer",
+    "tagline": "Building AI-Powered SaaS Solutions & Workflow Automation",
+    "email": "eshfaqnabi11@gmail.com",
+    "phone": "+916006331941",
+    "linkedin": "https://www.linkedin.com/in/ashfaq-nabi-6882401b7/",
+    "github": "https://github.com/eshfaq-ux",
+    "telegram": "@ashfaqnabi",
+    "location": "Srinagar"
+  },
+  "about": {
+    "description": "Full Stack Developer with 2+ years of experience building scalable web and AI-driven applications using React, Node.js, and OpenAI APIs. Proven track record of delivering enterprise-grade solutions that reduce operational costs by 35% and achieve 95% system reliability. Specialized in workflow automation, prompt engineering, and modern SaaS development.",
+    "keywords": ["Full Stack Development", "React.js", "Node.js", "JavaScript", "TypeScript", "MongoDB", "PostgreSQL", "REST APIs", "GraphQL", "Docker", "Git", "TailwindCSS", "Next.js", "Express.js", "Firebase", "Redis", "CI/CD", "Performance Optimization"]
+  },
+  "skills": {
+    "ai_ml": ["Prompt Engineering", "OpenAI GPT", "LangChain", "Hugging Face", "TensorFlow", "Machine Learning", "Natural Language Processing", "AI Chatbots"],
+    "programming": ["JavaScript", "TypeScript", "Python", "React", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "GraphQL", "REST APIs"],
+    "tools": ["Docker", "AWS", "Vercel", "Git", "Figma", "Postman", "VS Code", "Linux"],
+    "automation": ["n8n", "Zapier", "Make.com", "Workflow Automation", "API Integration", "Process Optimization", "Business Intelligence"]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "LinkVault - URL Shortening Service",
+      "description": "A modern, full-stack URL shortening service built with React, Node.js, and PostgreSQL. LinkVault provides enterprise-grade features including analytics, password protection, and user management with real-time tracking capabilities.",
+      "tech": ["React", "Node.js", "PostgreSQL", "Vercel", "JWT", "Tailwind CSS", "Framer Motion", "Zustand"],
+      "impact": "Built scalable URL shortening platform with 95% uptime, supporting unlimited users with enterprise security features",
+      "github": "https://gitlab.com/eshfaqnabi11/linkvault",
+      "demo": "https://linkvault-two.vercel.app/",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Intelligent Workflow Automation System",
+      "description": "Developed an AI-powered workflow automation platform that streamlined business operations for 50+ companies, reducing operational costs by 35%",
+      "tech": ["React", "Node.js", "MongoDB", "n8n", "OpenAI"],
+      "impact": "Reduced operational costs by 35% for 50+ companies",
+      "github": "https://github.com/<username>/workflow-automation",
+      "demo": "https://demo-link.com",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "AI Chatbot Framework",
+      "description": "Created a reusable AI chatbot framework with advanced prompt engineering, deployed across multiple client projects with 95% accuracy",
+      "tech": ["Python", "LangChain", "FastAPI", "OpenAI", "Docker"],
+      "impact": "Achieved 95% accuracy across multiple deployments",
+      "github": "https://github.com/<username>/ai-chatbot-framework",
+      "demo": "https://demo-link.com",
+      "featured": false
+    }
+  ],
+  "experience": [
+    {
+      "title": "Full Stack Developer",
+      "company": "Freelance",
+      "duration": "01/2023 - Present",
+      "location": "Remote",
+      "type": "Freelance",
+      "description": "Built and shipped multiple full-stack web applications, translating product requirements and Figma wireframes into responsive, accessible UI. Integrated REST/GraphQL APIs, handled authentication, state management, caching, and error handling.",
+      "achievements": [
+        "Built and shipped multiple full-stack web applications from concept to production",
+        "Translated product requirements and Figma wireframes into responsive, accessible UI",
+        "Integrated REST/GraphQL APIs with authentication, state management, and caching",
+        "Optimized applications for performance and reliability with comprehensive testing",
+        "Managed Git-based version control, CI/CD deployment pipelines, and code documentation standards",
+        "Troubleshot production issues, improving observability and system reliability"
+      ],
+      "technologies": ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "Redux", "Docker", "Git", "Firebase", "Redis"]
+    },
+    {
+      "title": "MCA Graduate",
+      "company": "BGSB University",
+      "duration": "2021 - 12/2023",
+      "location": "Srinagar",
+      "type": "Education",
+      "description": "Achieved academic excellence with a strong CGPA of 8.50 and consistent top performance in advanced subjects like Cloud Computing, Machine Learning, and Full-Stack Development.",
+      "achievements": [
+        "Achieved academic excellence with CGPA of 8.50",
+        "Capstone Project: AI-Powered Resume Builder using React & Node.js",
+        "Top performance in Cloud Computing, Machine Learning, and Full-Stack Development",
+        "Completed capstone project: Online Learning and Recruitment platform with AI-Powered Resume Builder",
+        "Led team-based project implementing blockchain-based payment solutions",
+        "Demonstrated leadership and technical expertise in collaborative projects"
+      ],
+      "technologies": ["React", "Node.js", "MongoDB", "Machine Learning", "Cloud Computing", "Blockchain", "Full-Stack Development"]
+    },
+    {
+      "title": "BCA Graduate",
+      "company": "Govt Degree College Ganderbal",
+      "duration": "2018 - 12/2021",
+      "location": "Srinagar",
+      "type": "Education",
+      "description": "Graduated with distinction and consistently maintained a high CGPA of 7.20. Ranked among the top performers in core subjects like Data Structures, DBMS, and Web Technologies.",
+      "achievements": [
+        "Graduated with distinction maintaining CGPA of 7.20",
+        "Ranked among top performers in Data Structures, DBMS, and Web Technologies",
+        "Developed major final-year project: Smart Library Management System using MERN stack",
+        "Earned faculty appreciation for technical excellence and project innovation"
+      ],
+      "technologies": ["MERN Stack", "Data Structures", "DBMS", "Web Technologies", "JavaScript", "HTML", "CSS"]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Full Stack Development in Python and Django",
+      "issuer": "A2IT Online Company",
+      "date": "2023",
+      "description": "Certified professional program covering full-stack development with Python and Django framework",
+      "certificate": "/certificates/1692443269796.jpeg"
+    },
+    {
+      "title": "Prompt Engineering Certificate",
+      "issuer": "Professional Certification Program",
+      "date": "2024",
+      "description": "Advanced certification in prompt engineering techniques, AI model optimization, and conversational AI development",
+      "certificate": "/certificates/prompt-engineering-certificate.pdf"
+    },
+    {
+      "title": "LangChain & OpenAI Developer Training",
+      "issuer": "Professional Development Program",
+      "date": "In Progress",
+      "description": "Advanced training in LangChain framework and OpenAI API integration for enterprise AI applications",
+      "certificate": ""
+    }
+  ]
+}
