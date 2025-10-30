@@ -119,7 +119,7 @@ const About = () => {
             <div className="flex flex-wrap justify-center gap-6 sm:gap-8 mt-8">
               <div className="text-center group">
                 <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                  2+
+                  1+
                 </div>
                 <div className="text-sm text-gray-600 font-medium">Years Experience</div>
               </div>
