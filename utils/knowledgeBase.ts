@@ -82,7 +82,7 @@ class PortfolioKnowledgeBase {
   }
 
   getContextForIntent(intent: string): string {
-    const categoryMap = {
+    const categoryMap: Record<string, string> = {
       'skills': 'skills',
       'projects': 'projects',
       'contact': 'contact',
