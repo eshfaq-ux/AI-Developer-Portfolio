@@ -99,7 +99,7 @@ class PortfolioKnowledgeBase {
 
   // Get smart follow-up questions based on conversation context
   generateFollowUps(currentIntent: string, previousIntents: string[]): string[] {
-    const followUpMap = {
+    const followUpMap: Record<string, Record<string, string[]>> = {
       'skills': {
         'projects': ["Which projects showcase these skills best?", "Can you show me implementations?"],
         'experience': ["How long have you been using these technologies?", "What's your expertise level?"],
