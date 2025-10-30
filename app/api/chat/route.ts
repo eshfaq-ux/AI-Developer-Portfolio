@@ -121,8 +121,8 @@ export async function POST(request: NextRequest) {
     // Get or create conversation context
     let context = conversations.get(sessionId) || {
       sessionId,
-      messages: [],
-      topics: []
+      messages: [] as Array<{ role: string; content: string; timestamp: string }>,
+      topics: [] as string[]
     }
 
     // Add user message to context
