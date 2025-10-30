@@ -175,7 +175,9 @@ export async function POST(request: NextRequest) {
     // Clean up old conversations (keep last 100)
     if (conversations.size > 100) {
       const oldestKey = conversations.keys().next().value
-      conversations.delete(oldestKey)
+      if (oldestKey) {
+        conversations.delete(oldestKey)
+      }
     }
 
     return NextResponse.json({
