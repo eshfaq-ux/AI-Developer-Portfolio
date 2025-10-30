@@ -117,7 +117,7 @@ const Hero = () => {
       clearInterval(intervalId)
       timeouts.forEach(clearTimeout)
     }
-  }, [isNameComplete, roles])
+  }, [isNameComplete, roles, roleIndex])
 
   // Enhanced particles with interactive behavior
   useEffect(() => {

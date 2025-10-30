@@ -48,7 +48,7 @@ function detectIntent(message: string): string {
 }
 
 function generateSuggestions(intent: string): string[] {
-  const suggestions = {
+  const suggestions: Record<string, string[]> = {
     skills: ["What AI/ML technologies does he use?", "Show me his full tech stack", "What's his strongest programming language?"],
     projects: ["Tell me about LinkVault features", "What was the biggest impact project?", "Show me live demos"],
     contact: ["What's the best way to reach him?", "Is he available for freelance work?", "How quickly does he respond?"],
