@@ -1,107 +1,238 @@
 import { NextRequest, NextResponse } from 'next/server'
 import portfolioData from '@/data/portfolio.json'
+import { chatAnalytics } from '@/utils/chatAnalytics'
+import { knowledgeBase } from '@/utils/knowledgeBase'
 
-// Fallback responses for when API fails
-const fallbackResponses = {
-  skills: "Ashfaq is a Full Stack Developer with expertise in React, Node.js, TypeScript, MongoDB, PostgreSQL, AI/ML technologies including OpenAI GPT, LangChain, and automation tools like n8n and Zapier.",
-  projects: "Key projects include LinkVault (URL shortening service), Intelligent Workflow Automation System (35% cost reduction for 50+ companies), and AI Chatbot Framework with 95% accuracy.",
-  contact: "You can reach Ashfaq at:\n📧 Email: eshfaqnabi11@gmail.com\n📱 Phone: +916006331941\n💼 LinkedIn: https://www.linkedin.com/in/ashfaq-nabi-6882401b7/\n🐙 GitHub: https://github.com/eshfaq-ux",
-  experience: "Ashfaq has 2+ years of freelance full-stack development experience, MCA from BGSB University (CGPA 8.50), and BCA from Govt Degree College Ganderbal (CGPA 7.20).",
-  availability: "Ashfaq is currently available for new projects and opportunities. Contact him directly for immediate response!"
+interface ConversationContext {
+  sessionId: string
+  messages: Array<{ role: string; content: string; timestamp: string }>
+  userIntent?: string
+  topics: string[]
 }
 
-function getSmartResponse(message: string): string {
+// In-memory conversation store (use Redis in production)
+const conversations = new Map<string, ConversationContext>()
+
+const SYSTEM_PROMPT = `You are Ashfaq Nabi's advanced AI assistant with deep knowledge of his professional background. 
+
+PERSONALITY: Professional, helpful, and knowledgeable. Speak as his representative with confidence about his abilities.
+
+PORTFOLIO DATA: ${JSON.stringify(portfolioData, null, 2)}
+
+CAPABILITIES:
+- Answer detailed questions about skills, projects, and experience
+- Provide specific examples and metrics from his work
+- Help with technical discussions about his expertise
+- Assist with contact and collaboration inquiries
+- Maintain conversation context and follow-up naturally
+
+RESPONSE GUIDELINES:
+- Be specific and data-driven when possible
+- Include relevant links, metrics, or examples
+- Ask clarifying questions for better assistance
+- Suggest next steps for potential collaborations
+- Keep responses concise but comprehensive (max 300 words)
+- Use emojis sparingly and professionally
+
+INTENT DETECTION: Classify user queries into: skills, projects, contact, experience, collaboration, technical, general`
+
+function detectIntent(message: string): string {
   const msg = message.toLowerCase()
+  if (msg.includes('skill') || msg.includes('tech') || msg.includes('programming') || msg.includes('language')) return 'skills'
+  if (msg.includes('project') || msg.includes('work') || msg.includes('portfolio') || msg.includes('demo')) return 'projects'
+  if (msg.includes('contact') || msg.includes('email') || msg.includes('phone') || msg.includes('reach')) return 'contact'
+  if (msg.includes('experience') || msg.includes('education') || msg.includes('background') || msg.includes('career')) return 'experience'
+  if (msg.includes('hire') || msg.includes('collaborate') || msg.includes('opportunity') || msg.includes('available')) return 'collaboration'
+  if (msg.includes('how') || msg.includes('implement') || msg.includes('build') || msg.includes('develop')) return 'technical'
+  return 'general'
+}
+
+function generateSuggestions(intent: string): string[] {
+  const suggestions = {
+    skills: ["What AI/ML technologies does he use?", "Show me his full tech stack", "What's his strongest programming language?"],
+    projects: ["Tell me about LinkVault features", "What was the biggest impact project?", "Show me live demos"],
+    contact: ["What's the best way to reach him?", "Is he available for freelance work?", "How quickly does he respond?"],
+    experience: ["What companies has he worked with?", "What's his educational background?", "How many years of experience?"],
+    collaboration: ["What type of projects is he looking for?", "What's his hourly rate?", "Can he work remotely?"],
+    technical: ["How does he approach AI integration?", "What's his development process?", "Can he explain his architecture choices?"],
+    general: ["What makes him unique as a developer?", "What are his recent achievements?", "What's he currently working on?"]
+  }
+  return suggestions[intent] || suggestions.general
+}
+
+async function callGeminiAPI(messages: Array<{ role: string; content: string }>, apiKey: string, query: string) {
+  const conversationHistory = messages.slice(-5).map(msg => 
+    `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`
+  ).join('\n')
+
+  // Get relevant knowledge context
+  const relevantKnowledge = knowledgeBase.searchKnowledge(query, 2)
+  const knowledgeContext = relevantKnowledge.map(k => k.content).join('\n')
+
+  const prompt = `${SYSTEM_PROMPT}
+
+RELEVANT KNOWLEDGE CONTEXT:
+${knowledgeContext}
+
+CONVERSATION HISTORY:
+${conversationHistory}
+
+Current User Message: ${messages[messages.length - 1].content}
+
+Provide a helpful, specific response as Ashfaq's AI assistant. Use the knowledge context to give accurate, detailed information:`
+
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 400,
+        topP: 0.8,
+        topK: 40
+      },
+      safetySettings: [
+        { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+        { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
+      ]
+    })
+  })
+
+  if (!response.ok) throw new Error(`Gemini API error: ${response.status}`)
   
-  if (msg.includes('skill') || msg.includes('tech') || msg.includes('programming')) {
-    return fallbackResponses.skills
-  }
-  if (msg.includes('project') || msg.includes('work') || msg.includes('portfolio')) {
-    return fallbackResponses.projects
-  }
-  if (msg.includes('contact') || msg.includes('email') || msg.includes('phone') || msg.includes('reach')) {
-    return fallbackResponses.contact
-  }
-  if (msg.includes('experience') || msg.includes('education') || msg.includes('background')) {
-    return fallbackResponses.experience
-  }
-  if (msg.includes('available') || msg.includes('hire') || msg.includes('opportunity')) {
-    return fallbackResponses.availability
-  }
-  
-  return `Hi! I'm Ashfaq's AI assistant. I can help you learn about his:\n\n• 💻 Technical Skills & Expertise\n• 🚀 Featured Projects & Demos\n• 💼 Professional Experience\n• 📧 Contact Information\n• 📅 Availability for Projects\n\nWhat would you like to know?`
+  const data = await response.json()
+  return data.candidates?.[0]?.content?.parts?.[0]?.text
 }
 
 export async function POST(request: NextRequest) {
+  const startTime = Date.now()
+  
   try {
-    const { message } = await request.json()
-    console.log('Received message:', message)
+    const { message, sessionId } = await request.json()
     
-    if (!message) {
+    if (!message?.trim()) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 })
     }
 
-    // Try Google AI API first
-    const apiKey = process.env.GOOGLE_AI_API_KEY
-    console.log('API Key exists:', !!apiKey)
-    
-    if (apiKey) {
-      try {
-        const systemPrompt = `You are Ashfaq Nabi's professional AI assistant. Answer questions about his skills, projects, and experience based on this data: ${JSON.stringify(portfolioData)}. Keep responses helpful and professional.`
-        
-        console.log('Making API call to Gemini...')
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              parts: [{
-                text: `${systemPrompt}\n\nUser question: ${message}`
-              }]
-            }],
-            generationConfig: {
-              temperature: 0.7,
-              maxOutputTokens: 500
-            }
-          })
-        })
+    // Initialize analytics tracking
+    chatAnalytics.trackSession(sessionId)
 
-        console.log('API Response status:', response.status)
-        
-        if (response.ok) {
-          const data = await response.json()
-          console.log('API Response data:', data)
-          const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text
-          
-          if (aiResponse) {
-            console.log('Returning AI response:', aiResponse.substring(0, 100) + '...')
-            return NextResponse.json({ 
-              response: aiResponse,
-              timestamp: new Date().toISOString()
-            })
-          }
-        } else {
-          const errorText = await response.text()
-          console.log('API Error:', response.status, errorText)
-        }
-      } catch (apiError) {
-        console.log('API error:', apiError)
-      }
+    // Get or create conversation context
+    let context = conversations.get(sessionId) || {
+      sessionId,
+      messages: [],
+      topics: []
     }
 
-    // Use smart fallback response
-    console.log('Using fallback response')
-    const fallbackResponse = getSmartResponse(message)
-    return NextResponse.json({ 
-      response: fallbackResponse,
+    // Add user message to context
+    const userMessage = { role: 'user', content: message.trim(), timestamp: new Date().toISOString() }
+    context.messages.push(userMessage)
+
+    // Detect intent and update topics
+    const intent = detectIntent(message)
+    if (!context.topics.includes(intent)) {
+      context.topics.push(intent)
+    }
+
+    let aiResponse: string
+    const apiKey = process.env.GOOGLE_AI_API_KEY
+
+    if (apiKey) {
+      try {
+        aiResponse = await callGeminiAPI(context.messages, apiKey, message)
+        
+        if (!aiResponse) throw new Error('Empty response from Gemini')
+        
+      } catch (apiError) {
+        console.error('Gemini API error:', apiError)
+        aiResponse = getIntelligentFallback(message, intent, context)
+      }
+    } else {
+      aiResponse = getIntelligentFallback(message, intent, context)
+    }
+
+    // Add AI response to context
+    const assistantMessage = { role: 'assistant', content: aiResponse, timestamp: new Date().toISOString() }
+    context.messages.push(assistantMessage)
+
+    // Update conversation store
+    conversations.set(sessionId, context)
+
+    // Track analytics
+    const responseTime = Date.now() - startTime
+    chatAnalytics.trackMessage(sessionId, intent, responseTime)
+
+    // Generate intelligent suggestions based on conversation flow
+    const previousIntents = context.messages
+      .filter(m => m.role === 'user')
+      .map(m => detectIntent(m.content))
+    
+    const smartSuggestions = knowledgeBase.generateFollowUps(intent, previousIntents)
+    const fallbackSuggestions = generateSuggestions(intent)
+    const suggestions = smartSuggestions.length > 0 ? smartSuggestions : fallbackSuggestions
+
+    // Clean up old conversations (keep last 100)
+    if (conversations.size > 100) {
+      const oldestKey = conversations.keys().next().value
+      conversations.delete(oldestKey)
+    }
+
+    return NextResponse.json({
+      response: aiResponse,
+      intent,
+      suggestions,
+      context: {
+        topics: context.topics,
+        messageCount: context.messages.length,
+        conversationDepth: previousIntents.length,
+        leadQuality: chatAnalytics.getSessionInsights(sessionId)?.leadQuality
+      },
+      performance: {
+        responseTime,
+        knowledgeMatches: knowledgeBase.searchKnowledge(message, 1).length
+      },
       timestamp: new Date().toISOString()
     })
 
   } catch (error) {
-    console.log('General error:', error)
-    return NextResponse.json({ 
-      response: fallbackResponses.contact,
+    console.error('Chat API error:', error)
+    return NextResponse.json({
+      response: "I'm Ashfaq's advanced AI assistant with deep knowledge of his expertise. I can provide detailed insights about his skills, projects, experience, and help you connect with him. What would you like to explore?",
+      intent: 'general',
+      suggestions: ["What are his core technical skills?", "Show me his most impactful projects", "How can I get in touch with him?"],
+      context: { topics: [], messageCount: 1 },
       timestamp: new Date().toISOString()
     })
+  }
+}
+
+function getIntelligentFallback(message: string, intent: string, context: ConversationContext): string {
+  const { personal, skills, projects, about } = portfolioData
+
+  switch (intent) {
+    case 'skills':
+      return `Ashfaq specializes in:\n\n🤖 **AI/ML**: ${skills.ai_ml.slice(0, 4).join(', ')}\n💻 **Programming**: ${skills.programming.slice(0, 4).join(', ')}\n🛠️ **Tools**: ${skills.tools.slice(0, 4).join(', ')}\n⚡ **Automation**: ${skills.automation.slice(0, 3).join(', ')}\n\nHe's particularly strong in AI integration and workflow automation. Want to know about a specific technology?`
+
+    case 'projects':
+      const featuredProjects = projects.filter(p => p.featured).slice(0, 2)
+      return `Here are Ashfaq's key projects:\n\n${featuredProjects.map(p => 
+        `🚀 **${p.title}**\n${p.description}\n💡 Impact: ${p.impact}\n🔗 [View Demo](${p.demo})`
+      ).join('\n\n')}\n\nWant to see more projects or learn about the technical implementation?`
+
+    case 'contact':
+      return `Ready to connect with Ashfaq? Here's how:\n\n📧 **Email**: ${personal.email}\n📱 **Phone**: ${personal.phone}\n💼 **LinkedIn**: [Connect here](${personal.linkedin})\n🐙 **GitHub**: [View code](${personal.github})\n📍 **Location**: ${personal.location}\n\nHe typically responds within 24 hours and is available for freelance projects!`
+
+    case 'experience':
+      return `Ashfaq brings solid experience:\n\n💼 **2+ years** of full-stack development\n🎓 **MCA** from BGSB University (CGPA 8.50)\n🎓 **BCA** from Govt Degree College Ganderbal\n🏆 **50+ companies** served with automation solutions\n📈 **35% cost reduction** achieved for clients\n⚡ **95% system reliability** across projects\n\nWant to know about specific technologies or project outcomes?`
+
+    case 'collaboration':
+      return `Ashfaq is available for:\n\n✅ Full-stack web development\n✅ AI/ML integration projects\n✅ Workflow automation solutions\n✅ SaaS product development\n✅ Technical consulting\n\n📅 **Availability**: Open for new projects\n⏱️ **Response time**: Within 24 hours\n🌍 **Work style**: Remote-friendly\n\nReady to discuss your project? Contact him at ${personal.email}`
+
+    case 'technical':
+      return `Ashfaq's technical approach:\n\n🏗️ **Architecture**: Scalable, modular design patterns\n🤖 **AI Integration**: OpenAI, LangChain, custom prompts\n⚡ **Performance**: Optimized for speed and reliability\n🔒 **Security**: Enterprise-grade best practices\n🧪 **Testing**: Comprehensive testing strategies\n\nNeed specifics about implementation or want to discuss your technical requirements?`
+
+    default:
+      return `Hi! I'm Ashfaq's AI assistant. I can help you explore:\n\n💻 His technical skills and expertise\n🚀 Featured projects with live demos\n💼 Professional experience and achievements\n📧 Contact information and availability\n🤝 Collaboration opportunities\n\nWhat interests you most about Ashfaq's work?`
   }
 }

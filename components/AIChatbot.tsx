@@ -74,7 +74,8 @@ export default function AIChatbot() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: content
+          message: content,
+          sessionId
         })
       })
 
@@ -84,11 +85,13 @@ export default function AIChatbot() {
 
       const data = await response.json()
       
-      // Use the correct response field
-      const aiMessage = data.response || data.message || 'Sorry, I could not process your request.'
+      // Enhanced response handling
+      const aiMessage = data.response || 'Sorry, I could not process your request.'
       
-      // Realistic typing delay based on response length
-      const typingDelay = Math.min(Math.max(aiMessage.length * 20, 800), 2500)
+      // Realistic typing delay based on response length and complexity
+      const baseDelay = Math.min(Math.max(aiMessage.length * 15, 1000), 3000)
+      const complexityBonus = data.intent === 'technical' ? 500 : 0
+      const typingDelay = baseDelay + complexityBonus
       
       setTimeout(() => {
         setIsTyping(false)
@@ -108,10 +111,13 @@ export default function AIChatbot() {
       setIsTyping(false)
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Hi! I can help you learn about Ashfaq\'s skills, projects, and experience. You can also contact him directly at eshfaqnabi11@gmail.com for immediate assistance.',
-        timestamp: new Date().toISOString()
+        content: 'I\'m here to help you learn about Ashfaq\'s expertise! Ask me about his skills, projects, experience, or how to get in touch. I have detailed knowledge of his work and can provide specific examples.',
+        timestamp: new Date().toISOString(),
+        intent: 'general',
+        suggestions: ["What are his key technical skills?", "Show me his best projects", "How can I contact him?"]
       }])
       setIsLoading(false)
+      setShowSuggestions(true)
     }
   }
 
