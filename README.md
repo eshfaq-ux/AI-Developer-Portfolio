@@ -222,8 +222,8 @@ MIT License - feel free to use for your own portfolio!
 
 For questions or issues:
 - Create an issue on GitHub
-- Email: your.email@example.com
-- LinkedIn: [Your Profile]
+- Email: eshfaqnabi11@gmail.com
+- LinkedIn: https://www.linkedin.com/in/ashfaq-nabi-6882401b7/
 
 ---
 
