@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
     domains: ['cdn.jsdelivr.net'],
   },
+  // Remove output: 'export' to enable API routes on Vercel
+  experimental: {
+    serverComponentsExternalPackages: []
+  }
 }
 
 module.exports = nextConfig
