@@ -6,6 +6,7 @@ export async function GET() {
   return NextResponse.json({
     hasApiKey: !!apiKey,
     keyLength: apiKey ? apiKey.length : 0,
-    keyStart: apiKey ? apiKey.substring(0, 10) + '...' : 'No key'
+    keyPrefix: apiKey ? apiKey.substring(0, 10) + '...' : 'Not found',
+    nodeEnv: process.env.NODE_ENV
   })
 }
