@@ -1,5 +1,5 @@
 // List available Gemini models
-const apiKey = "AIzaSyBR2EtaLDPJI7I6GtRyy0nsF9ZOL80VOCU"
+const apiKey = "AIzaSyCROubqakZ-hyU9m0HyVuga3bNCl_2u2vo"
 
 async function listModels() {
   try {
