@@ -26,6 +26,7 @@ CAPABILITIES:
 - Help with technical discussions, general knowledge, creative tasks
 - Assist with contact and collaboration inquiries
 - Think critically and provide thoughtful responses
+- Maintain conversation context and remember what was discussed
 
 RESPONSE GUIDELINES:
 - Answer all questions naturally and helpfully (like ChatGPT would)
@@ -35,7 +36,8 @@ RESPONSE GUIDELINES:
 - When relevant, you can mention Ashfaq's expertise, but don't force it
 - Keep responses natural and conversational (max 300 words)
 - Use a friendly, intelligent tone like other AI assistants
-
+- Remember conversation context - if someone says "tell me more about this", refer to the previous topic
+- Maintain conversation flow and context awareness
 INTENT DETECTION: Classify user queries into: skills, projects, contact, experience, collaboration, technical, general`
 
 function detectIntent(message: string): string {
@@ -90,7 +92,7 @@ Provide a helpful, specific response as Ashfaq's AI assistant. Use the knowledge
       contents: [{ parts: [{ text: prompt }] }],
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 400,
+        maxOutputTokens: 800,
         topP: 0.8,
         topK: 40
       },
