@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { Send, Bot, User, Minimize2, Maximize2, RotateCcw, Copy } from 'lucide-react'
+import MessageRenderer from './MessageRenderer'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -259,7 +260,10 @@ export default function AIChatbot() {
                         ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-blue-500/20'
                         : 'bg-gray-800 text-gray-100 border border-gray-700/50'
                     }`}>
-                      <p className="text-sm whitespace-pre-wrap leading-relaxed">{message.content}</p>
+                      <MessageRenderer 
+                        content={message.content}
+                        className="whitespace-pre-wrap leading-relaxed"
+                      />
                       <div className="flex items-center justify-between mt-1.5">
                         <div className="flex items-center space-x-2">
                           <p className={`text-xs font-medium ${
