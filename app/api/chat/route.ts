@@ -240,3 +240,4 @@ function getIntelligentFallback(message: string, intent: string, context: Conver
       return `Hi! I'm Ashfaq's AI assistant. I can help you explore:\n\n💻 His technical skills and expertise\n🚀 Featured projects with live demos\n💼 Professional experience and achievements\n📧 Contact information and availability\n🤝 Collaboration opportunities\n\nWhat interests you most about Ashfaq's work?`
   }
 }
+// Force redeploy Sun Dec  7 20:48:44 IST 2025
