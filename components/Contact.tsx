@@ -1,14 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Mail, Linkedin, Github, MessageCircle, MapPin, Send, Phone, Calendar, CheckCircle, AlertCircle } from 'lucide-react'
 import portfolioData from '@/data/portfolio.json'
 import { useScrollAnimation, animationVariants, getStaggerDelay } from '@/hooks/useScrollAnimation'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const { personal } = portfolioData
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ triggerOnce: true })
   const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ triggerOnce: true })
+  const formRef = useRef<HTMLFormElement>(null)
   
   const [formData, setFormData] = useState({
     name: '',
@@ -41,12 +43,38 @@ const Contact = () => {
     setIsSubmitting(true)
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      // Check if EmailJS is configured
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        // Fallback: Create mailto link if EmailJS not configured
+        const subject = encodeURIComponent(formData.subject)
+        const body = encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )
+        window.open(`mailto:${personal.email}?subject=${subject}&body=${body}`)
+        
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+        return
+      }
+
+      // Send email using EmailJS
+      await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current!,
+        publicKey
+      )
       
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
       setTimeout(() => setSubmitStatus('idle'), 5000)
     } catch (error) {
+      console.error('Email send error:', error)
       setSubmitStatus('error')
       setTimeout(() => setSubmitStatus('idle'), 5000)
     } finally {
@@ -91,7 +119,7 @@ const Contact = () => {
       icon: Calendar,
       label: 'Schedule',
       value: 'Book a meeting',
-      href: '#',
+      href: 'https://calendly.com/your-username', // Replace with your Calendly link
       color: 'text-orange-600',
       bgColor: 'bg-orange-50'
     }
@@ -156,6 +184,8 @@ const Contact = () => {
                     <a
                       key={index}
                       href={method.href}
+                      target={method.href.startsWith('http') ? '_blank' : undefined}
+                      rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className={`flex items-center p-4 ${method.bgColor} rounded-2xl border border-white/30 hover:shadow-lg transition-all duration-300 group transform hover:scale-105 hover:-translate-y-1`}
                       style={animationVariants.fadeInLeft(contentVisible, getStaggerDelay(index, 100) + 300)}
                     >
@@ -195,6 +225,17 @@ const Contact = () => {
                   })}
                 </div>
               </div>
+
+              {/* Quick Contact Info */}
+              <div 
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/30"
+                style={animationVariants.fadeInLeft(contentVisible, 800)}
+              >
+                <h4 className="font-bold text-gray-900 mb-3">Quick Response</h4>
+                <p className="text-gray-600 text-sm mb-2">📧 Email: Usually within 24 hours</p>
+                <p className="text-gray-600 text-sm mb-2">💬 LinkedIn: Same day response</p>
+                <p className="text-gray-600 text-sm">📱 Telegram: Fastest response</p>
+              </div>
             </div>
 
             {/* Enhanced Contact Form */}
@@ -218,7 +259,7 @@ const Contact = () => {
                 </div>
               )}
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div style={animationVariants.fadeInUp(contentVisible, 600)}>
                     <label htmlFor="name" className="block text-sm font-bold text-gray-900 mb-2">
