@@ -173,6 +173,7 @@ const Hero = () => {
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
                   priority
                   quality={100}
+                  unoptimized={true}
                   style={{
                     filter: 'contrast(1.1) brightness(1.05) saturate(1.02)',
                   }}
