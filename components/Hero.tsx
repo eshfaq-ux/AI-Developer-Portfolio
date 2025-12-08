@@ -159,8 +159,8 @@ const Hero = () => {
         {/* Enhanced Profile Image */}
         <div className="mb-8 mt-14 flex justify-center">
           <div className="relative group">
-            <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-slate-200 via-white to-slate-300 p-[1px] shadow-2xl">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-50 to-gray-100 p-[1px]">
+            <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full shadow-2xl">
+
               <Image 
                 src="/1000057934.jpg" 
                 alt={`${personal.name} - Professional Profile`}
@@ -174,7 +174,8 @@ const Hero = () => {
                   transform: 'scale(0.85)',
                 }}
               />
-              </div>            </div>
+            </div>
+
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 opacity-10 group-hover:opacity-20 transition-all duration-500"></div>
 
 
