@@ -166,7 +166,7 @@ const Hero = () => {
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 p-1 shadow-xl">
               <div className="w-full h-full rounded-full overflow-hidden bg-white">
                 <img 
-                  src="/profile.png" 
+                  src="/1681207343598.jpg" 
                   alt={`${personal.name} - Professional Profile`}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
                   loading="eager"
