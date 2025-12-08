@@ -166,9 +166,10 @@ const Hero = () => {
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 p-1 shadow-xl">
               <div className="w-full h-full rounded-full overflow-hidden bg-white">
                 <img 
-                  src="/Screenshot_20250905-223901.png" 
+                  src="/profile.png" 
                   alt={`${personal.name} - Professional Profile`}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+                  loading="eager"
                   style={{
                     filter: 'contrast(1.1) brightness(1.05) saturate(1.02)',
                   }}
