@@ -159,14 +159,14 @@ const Hero = () => {
         {/* Enhanced Profile Image */}
         <div className="mb-8 mt-14 flex justify-center">
           <div className="relative group">
-            <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full border-2 border-gray-300/30 shadow-lg">
+            <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full shadow-lg">
 
               <Image 
                 src="/1681207343598.jpg" 
                 alt={`${personal.name} - Professional Profile`}
                 width={256}
                 height={256}
-                className="w-full h-full rounded-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 shadow-inner"
+                className="w-full h-full rounded-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 shadow-inner border-2 border-gray-300/30"
                 priority
                 quality={100}
                 style={{
