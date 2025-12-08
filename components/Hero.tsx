@@ -176,7 +176,7 @@ const Hero = () => {
               />
             </div>
 
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 opacity-10 group-hover:opacity-20 transition-all duration-500"></div>
+
 
 
           </div>
