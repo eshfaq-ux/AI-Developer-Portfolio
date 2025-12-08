@@ -166,7 +166,7 @@ const Hero = () => {
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 p-1 shadow-xl">
               <div className="w-full h-full rounded-full overflow-hidden bg-white">
                 <Image 
-                  src="/1681207343598.jpg" 
+                  src="/Screenshot_20250905-223901.png" 
                   alt={`${personal.name} - Professional Profile`}
                   width={256}
                   height={256}
