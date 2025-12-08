@@ -15,10 +15,12 @@ const Hero = () => {
   
   const fullName = personal.name
   const roles = useMemo(() => [
-    'Full Stack Developer',
-    'AI Integration Specialist', 
-    'Software Engineer',
-    'Web Application Developer'
+    'React & Next.js Development',
+    'Node.js & Express Backend',
+    'Database Design & Management',
+    'API Development & Integration',
+    'Cloud Deployment & DevOps',
+    'UI/UX Design & Implementation'
   ], [])
   
   // Name typing effect
