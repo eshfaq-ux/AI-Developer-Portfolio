@@ -162,7 +162,7 @@ const Hero = () => {
             <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full shadow-2xl">
 
               <Image 
-                src="/1000057934.jpg" 
+                src="/1000052363.jpg" 
                 alt={`${personal.name} - Professional Profile`}
                 width={256}
                 height={256}
