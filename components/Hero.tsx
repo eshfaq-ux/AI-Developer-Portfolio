@@ -159,21 +159,26 @@ const Hero = () => {
         {/* Enhanced Profile Image */}
         <div className="mb-8 mt-14 flex justify-center">
           <div className="relative group">
-            <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full shadow-lg">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 p-1 shadow-xl">
+              <div className="w-full h-full rounded-full overflow-hidden bg-white">
 
               <Image 
                 src="/1681207343598.jpg" 
                 alt={`${personal.name} - Professional Profile`}
                 width={256}
                 height={256}
-                className="w-full h-full rounded-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 shadow-inner border-2 border-gray-300/30"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
                 priority
                 quality={100}
                 style={{
-                  filter: 'contrast(1.15) brightness(1.1) saturate(1.05)',
-                  transform: 'scale(0.85)',
+                  filter: 'contrast(1.1) brightness(1.05) saturate(1.02)',
                 }}
               />
+              </div>
+            </div>
+            
+            {/* Subtle ring animation */}
+            <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/40 transition-all duration-500"></div>
             </div>
 
 
