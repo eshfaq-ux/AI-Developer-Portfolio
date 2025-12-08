@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import portfolioData from '@/data/portfolio.json'
 
@@ -21,7 +21,7 @@ const Hero = () => {
     'Web Application Developer'
   ], [])
   
-  // Enhanced name typing effect with sound-like rhythm
+  // Enhanced name typing effect
   useEffect(() => {
     let timeouts: NodeJS.Timeout[] = []
     
@@ -103,17 +103,17 @@ const Hero = () => {
       clearInterval(intervalId)
       timeouts.forEach(clearTimeout)
     }
-  }, [isNameComplete, roles])
+  }, [isNameComplete, roles, roleIndex])
 
-  // Optimized particles with better performance
+  // Optimized particles
   useEffect(() => {
-    const particleCount = 50 // Reduced from 150
+    const particleCount = 50
     const newParticles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 2 + 1, // Smaller particles
-      speed: Math.random() * 0.5 + 0.1, // Slower movement
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 0.5 + 0.1,
       opacity: Math.random() * 0.6 + 0.2
     }))
     setParticles(newParticles)
@@ -125,13 +125,13 @@ const Hero = () => {
       })))
     }
 
-    const interval = setInterval(animateParticles, 100) // Slower animation (was 50ms)
+    const interval = setInterval(animateParticles, 100)
     return () => clearInterval(interval)
-  }, []) // Removed mousePosition dependency for better performance
+  }, [])
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-emerald-950 to-black pt-20 relative overflow-hidden">
-      {/* Optimized Animated Particles */}
+      {/* Animated Particles */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map(particle => (
           <div
@@ -148,46 +148,44 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Simplified Background Pattern */}
+      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute w-96 h-96 bg-indigo-500 rounded-full blur-3xl top-20 left-10"></div>
         <div className="absolute w-96 h-96 bg-blue-500 rounded-full blur-3xl bottom-20 right-10"></div>
       </div>
 
-      {/* Content Layer with enhanced animations */}
+      {/* Content Layer */}
       <div className="container-custom text-center relative z-10 px-4 sm:px-6">
-        {/* Enhanced Profile Image */}
-        <div className="mb-8 mt-14 flex justify-center">
+        {/* Professional Profile Image */}
+        <div className="mb-12 mt-16 flex justify-center">
           <div className="relative group">
+            {/* Subtle glow effect */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-indigo-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            
+            {/* Main image container with perfect circular properties */}
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 p-1 shadow-xl">
               <div className="w-full h-full rounded-full overflow-hidden bg-white">
-
-              <Image 
-                src="/1681207343598.jpg" 
-                alt={`${personal.name} - Professional Profile`}
-                width={256}
-                height={256}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
-                priority
-                quality={100}
-                style={{
-                  filter: 'contrast(1.1) brightness(1.05) saturate(1.02)',
-                }}
-              />
+                <Image 
+                  src="/1681207343598.jpg" 
+                  alt={`${personal.name} - Professional Profile`}
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+                  priority
+                  quality={100}
+                  style={{
+                    filter: 'contrast(1.1) brightness(1.05) saturate(1.02)',
+                  }}
+                />
               </div>
             </div>
             
             {/* Subtle ring animation */}
             <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/40 transition-all duration-500"></div>
-            </div>
-
-
-
-
           </div>
         </div>
 
-        {/* Enhanced Typography with stagger animations */}
+        {/* Typography */}
         <div className="mb-12">
           <p className={`text-xl sm:text-2xl text-gray-300 mb-6 font-medium transition-all duration-1000 ${isNameComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             Hello, I'm
@@ -202,7 +200,7 @@ const Hero = () => {
                   {displayedName.split(' ')[1]}
                 </span>
               )}
-              <span className={`text-white ${isNameComplete ? 'animate-pulse' : 'animate-blink'}`}>|</span>
+              <span className={`text-white ${isNameComplete ? 'animate-pulse' : 'animate-pulse'}`}>|</span>
             </span>
           </h1>
         </div>
@@ -227,13 +225,12 @@ const Hero = () => {
             )}
           </p>
           
-          {/* Enhanced Professional Tagline */}
           <p className={`text-base sm:text-lg text-gray-400 max-w-2xl mx-auto mt-4 leading-relaxed transition-all duration-1000 delay-1000 ${isNameComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             Building scalable web applications with intelligent automation
           </p>
         </div>
 
-        {/* Enhanced CTA with hover effects */}
+        {/* CTA */}
         <div className={`mb-8 transition-all duration-1000 delay-1500 ${isNameComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <a 
             href="#projects" 
@@ -244,42 +241,6 @@ const Hero = () => {
           </a>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes gradient-x {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes blink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0; }
-        }
-        
-        .animate-gradient-x {
-          background-size: 200% 200%;
-          animation: gradient-x 3s ease infinite;
-        }
-        
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out;
-        }
-        
-        .animate-blink {
-          animation: blink 1s infinite;
-        }
-      `}</style>
     </section>
   )
 }
