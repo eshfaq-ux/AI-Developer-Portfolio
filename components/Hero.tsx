@@ -159,18 +159,18 @@ const Hero = () => {
         {/* Enhanced Profile Image */}
         <div className="mb-8 mt-14 flex justify-center">
           <div className="relative group">
-            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-[3px] shadow-2xl">
-              <div className="w-full h-full rounded-full bg-gradient-to-r from-gray-900 to-gray-800 p-[2px]">
+            <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-slate-200 via-white to-slate-300 p-[4px] shadow-2xl">
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-50 to-gray-100 p-[3px]">
               <Image 
-                src="/1000003500.jpg" 
-                alt={`${personal.name} - Full Stack Developer`}
-                width={160}
-                height={176}
-                className="w-full h-full rounded-full object-cover object-center group-hover:scale-105 transition-all duration-700 group-hover:rotate-2 shadow-xl"
+                src="/1000057934.jpg" 
+                alt={`${personal.name} - Professional Profile`}
+                width={256}
+                height={256}
+                className="w-full h-full rounded-full object-cover object-top group-hover:scale-[1.02] transition-all duration-500 shadow-inner"
                 priority
-                quality={95}
+                quality={100}
                 style={{
-                  filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
+                  filter: 'contrast(1.15) brightness(1.1) saturate(1.05)',
                 }}
               />
               </div>            </div>
