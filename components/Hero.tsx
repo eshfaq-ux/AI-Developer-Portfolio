@@ -19,7 +19,9 @@ const Hero = () => {
     'Node.js & Express Backend',
     'Database Design & Management',
     'API Development & Integration',
+    'CI/CD Pipeline & Automation',
     'Cloud Deployment & DevOps',
+    'Testing & Quality Assurance',
     'UI/UX Design & Implementation'
   ], [])
   
