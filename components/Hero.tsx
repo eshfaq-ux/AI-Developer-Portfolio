@@ -21,89 +21,102 @@ const Hero = () => {
     'Web Application Developer'
   ], [])
   
-  // Enhanced name typing effect
+  // Name typing effect
   useEffect(() => {
-    let timeouts: NodeJS.Timeout[] = []
+    if (!fullName) return
     
-    const typeText = (text: string, callback: () => void) => {
-      for (let i = 1; i <= text.length; i++) {
-        const delay = i === 1 ? 0 : (text[i-2] === ' ' ? 200 : Math.random() * 100 + 50)
-        const timeout = setTimeout(() => {
-          setDisplayedName(text.slice(0, i))
-          if (i === text.length) {
-            setTimeout(callback, 800)
-          }
-        }, i * 80 + delay)
-        timeouts.push(timeout)
+    let timeout: NodeJS.Timeout
+    let currentIndex = 0
+    
+    const typeCharacter = () => {
+      if (currentIndex <= fullName.length) {
+        setDisplayedName(fullName.slice(0, currentIndex))
+        currentIndex++
+        
+        if (currentIndex <= fullName.length) {
+          timeout = setTimeout(typeCharacter, 100)
+        } else {
+          setTimeout(() => setIsNameComplete(true), 500)
+        }
       }
     }
-
-    // Start typing after initial delay
-    const startTimeout = setTimeout(() => {
-      typeText(fullName, () => setIsNameComplete(true))
-    }, 1000)
-    timeouts.push(startTimeout)
-
-    return () => timeouts.forEach(clearTimeout)
+    
+    // Start typing after delay
+    timeout = setTimeout(typeCharacter, 1000)
+    
+    return () => clearTimeout(timeout)
   }, [fullName])
 
-  // Enhanced role rotation with smooth transitions
+  // Role rotation effect
   useEffect(() => {
     if (!isNameComplete) return
-
-    let timeouts: NodeJS.Timeout[] = []
-    let intervalId: NodeJS.Timeout
-
+    
+    let typeTimeout: NodeJS.Timeout
+    let eraseTimeout: NodeJS.Timeout
+    let cycleTimeout: NodeJS.Timeout
+    
     const typeRole = (role: string) => {
+      let charIndex = 0
       setIsTyping(true)
       
-      for (let i = 0; i <= role.length; i++) {
-        const timeout = setTimeout(() => {
-          setCurrentRole(role.slice(0, i))
-          if (i === role.length) {
+      const typeChar = () => {
+        if (charIndex <= role.length) {
+          setCurrentRole(role.slice(0, charIndex))
+          charIndex++
+          
+          if (charIndex <= role.length) {
+            typeTimeout = setTimeout(typeChar, 80)
+          } else {
             setIsTyping(false)
           }
-        }, i * 60)
-        timeouts.push(timeout)
+        }
       }
-    }
-
-    const eraseRole = (callback: () => void) => {
-      const roleToErase = roles[roleIndex]
-      for (let i = roleToErase.length; i >= 0; i--) {
-        const timeout = setTimeout(() => {
-          setCurrentRole(roleToErase.slice(0, i))
-          if (i === 0) {
-            setTimeout(callback, 300)
-          }
-        }, (roleToErase.length - i) * 40)
-        timeouts.push(timeout)
-      }
-    }
-
-    // Start with first role
-    const startTimeout = setTimeout(() => {
-      typeRole(roles[0])
       
-      // Set up rotation after initial typing
-      intervalId = setInterval(() => {
-        eraseRole(() => {
-          setRoleIndex(prev => {
-            const nextIndex = (prev + 1) % roles.length
-            setTimeout(() => typeRole(roles[nextIndex]), 100)
-            return nextIndex
-          })
-        })
-      }, 4000)
-    }, 1000)
-    
-    timeouts.push(startTimeout)
-
-    return () => {
-      clearInterval(intervalId)
-      timeouts.forEach(clearTimeout)
+      typeChar()
     }
-  }, [isNameComplete, roles, roleIndex])
+    
+    const eraseRole = (callback: () => void) => {
+      const currentText = roles[roleIndex]
+      let charIndex = currentText.length
+      
+      const eraseChar = () => {
+        if (charIndex >= 0) {
+          setCurrentRole(currentText.slice(0, charIndex))
+          charIndex--
+          
+          if (charIndex >= 0) {
+            eraseTimeout = setTimeout(eraseChar, 50)
+          } else {
+            setTimeout(callback, 200)
+          }
+        }
+      }
+      
+      eraseChar()
+    }
+    
+    const cycleRoles = () => {
+      // Type current role
+      typeRole(roles[roleIndex])
+      
+      // After 3 seconds, erase and move to next
+      cycleTimeout = setTimeout(() => {
+        eraseRole(() => {
+          setRoleIndex(prev => (prev + 1) % roles.length)
+        })
+      }, 3000)
+    }
+    
+    // Start the cycle
+    const initialTimeout = setTimeout(cycleRoles, 500)
+    
+    return () => {
+      clearTimeout(typeTimeout)
+      clearTimeout(eraseTimeout)
+      clearTimeout(cycleTimeout)
+      clearTimeout(initialTimeout)
+    }
+  }, [isNameComplete, roleIndex, roles])
 
   // Optimized particles
   useEffect(() => {
