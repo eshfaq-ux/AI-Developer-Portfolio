@@ -166,11 +166,12 @@ const Hero = () => {
                 alt={`${personal.name} - Professional Profile`}
                 width={256}
                 height={256}
-                className="w-full h-full rounded-full object-cover object-top group-hover:scale-[1.02] transition-all duration-500 shadow-inner"
+                className="w-full h-full rounded-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 shadow-inner"
                 priority
                 quality={100}
                 style={{
                   filter: 'contrast(1.15) brightness(1.1) saturate(1.05)',
+                  transform: 'scale(0.85)',
                 }}
               />
               </div>            </div>
