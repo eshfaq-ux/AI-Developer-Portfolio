@@ -71,3 +71,11 @@ Ashfaq_Nabi_Resume*
 Prompt\ Engineering\ Certificate.pdf
 
 .vercel
+# API Keys and Secrets - SECURITY CRITICAL
+**/api-key*
+**/test-api*
+**/test-gemini*
+**/*key*.js
+**/*secret*
+*.key
+api-keys/
