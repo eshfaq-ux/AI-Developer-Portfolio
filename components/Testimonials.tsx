@@ -131,37 +131,44 @@ const Testimonials = () => {
             {getVisibleTestimonials().map((testimonial, index) => (
               <div
                 key={`${currentIndex}-${index}`}
-                className="flex-1 bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 animate-slideInRight"
+                className={`flex-1 bg-gradient-to-br ${testimonial.color} rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 border-2 border-white/20 backdrop-blur-sm relative overflow-hidden group`}
                 style={{
                   animation: `slideInRight 0.6s ease-out ${index * 0.1}s both`,
                 }}
               >
-                <div className={`w-16 h-1 bg-gradient-to-r ${testimonial.color} rounded-full mb-6`}></div>
-                
-                <Quote className="text-indigo-500 mb-4" size={32} />
-                
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
-                  ))}
+                {/* Animated Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full blur-3xl transform group-hover:scale-150 transition-transform duration-700"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-white rounded-full blur-2xl transform group-hover:scale-150 transition-transform duration-700"></div>
                 </div>
 
-                <p className="text-gray-700 leading-relaxed mb-6 italic min-h-[120px]">
-                  "{testimonial.text}"
-                </p>
-
-                <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${testimonial.color} text-white text-sm font-semibold mb-6`}>
-                  {testimonial.result}
-                </div>
-
-                <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${testimonial.color} flex items-center justify-center text-white font-bold text-xl`}>
-                    {testimonial.name.charAt(0)}
+                <div className="relative z-10">
+                  <div className="flex justify-between items-start mb-6">
+                    <Quote className="text-white/90" size={40} />
+                    <div className="flex gap-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} size={18} className="fill-yellow-300 text-yellow-300 drop-shadow-lg" />
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <p className="text-xs text-indigo-600 mt-1">{testimonial.project}</p>
+
+                  <p className="text-white text-lg leading-relaxed mb-6 font-medium min-h-[140px]">
+                    "{testimonial.text}"
+                  </p>
+
+                  <div className="inline-block px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-bold mb-6 border border-white/30 shadow-lg">
+                    ✨ {testimonial.result}
+                  </div>
+
+                  <div className="flex items-center gap-4 pt-6 border-t border-white/20">
+                    <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white font-bold text-2xl border-2 border-white/30 shadow-xl">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-lg">{testimonial.name}</p>
+                      <p className="text-sm text-white/80 font-medium">{testimonial.role}</p>
+                      <p className="text-xs text-white/70 mt-1 font-semibold">📦 {testimonial.project}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -206,35 +213,42 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              className={`bg-gradient-to-br ${testimonial.color} rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border-2 border-white/20 backdrop-blur-sm relative overflow-hidden group`}
               style={animationVariants.fadeInRight(cardsVisible, getStaggerDelay(index, 150))}
             >
-              <div className={`w-16 h-1 bg-gradient-to-r ${testimonial.color} rounded-full mb-6`}></div>
-              
-              <Quote className="text-indigo-500 mb-4" size={32} />
-              
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
-                ))}
+              {/* Animated Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full blur-3xl transform group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white rounded-full blur-2xl transform group-hover:scale-150 transition-transform duration-700"></div>
               </div>
 
-              <p className="text-gray-700 leading-relaxed mb-6 italic">
-                "{testimonial.text}"
-              </p>
-
-              <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${testimonial.color} text-white text-sm font-semibold mb-6`}>
-                {testimonial.result}
-              </div>
-
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${testimonial.color} flex items-center justify-center text-white font-bold text-xl`}>
-                  {testimonial.name.charAt(0)}
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                  <Quote className="text-white/90" size={40} />
+                  <div className="flex gap-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} size={18} className="fill-yellow-300 text-yellow-300 drop-shadow-lg" />
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  <p className="text-xs text-indigo-600 mt-1">{testimonial.project}</p>
+
+                <p className="text-white text-lg leading-relaxed mb-6 font-medium">
+                  "{testimonial.text}"
+                </p>
+
+                <div className="inline-block px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-bold mb-6 border border-white/30 shadow-lg">
+                  ✨ {testimonial.result}
+                </div>
+
+                <div className="flex items-center gap-4 pt-6 border-t border-white/20">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white font-bold text-2xl border-2 border-white/30 shadow-xl">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-bold text-white text-lg">{testimonial.name}</p>
+                    <p className="text-sm text-white/80 font-medium">{testimonial.role}</p>
+                    <p className="text-xs text-white/70 mt-1 font-semibold">📦 {testimonial.project}</p>
+                  </div>
                 </div>
               </div>
             </div>
