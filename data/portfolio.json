@@ -263,26 +263,26 @@
   ],
   "experience": [
     {
-      "title": "Software Development Intern",
-      "company": "A2IT Online",
-      "duration": "6 Months (2023)",
-      "location": "Remote / Chandigarh-based Company",
+      "title": "Web Development Intern",
+      "company": "Abun.com",
+      "duration": "Jan 2025 \u2013 Jun 2025",
+      "location": "Remote",
       "type": "Internship",
-      "description": "Completed a structured Full Stack Development Internship focused on Python, Django, and REST API frameworks.",
+      "description": "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
       "achievements": [
-        "Completed a structured Full Stack Development Internship focused on Python, Django, and REST API frameworks.",
-        "Developed multi-tiered web applications that included backend APIs, frontend integration, and authentication systems.",
-        "Collaborated with senior mentors to refine code quality, improve performance, and follow software development best practices.",
-        "Applied MVC architecture principles to design modular, maintainable systems.",
-        "Participated in debugging sessions, resolving UI inconsistencies, and testing database connectivity.",
-        "Strengthened practical understanding of software lifecycles, agile development, and cloud deployment workflows."
+        "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
+        "Implemented responsive interfaces and reusable UI components using React.js, Tailwind CSS, and Bootstrap.",
+        "Supported backend development tasks using Node.js and Express.js, ensuring smooth data flow between server and frontend.",
+        "Collaborated with product managers and senior engineers to develop, test, and deploy new features.",
+        "Conducted performance audits and implemented optimization techniques, resulting in faster page load times and better API efficiency.",
+        "Actively participated in agile sprints, code reviews, and documentation updates to maintain software consistency."
       ],
       "technologies": [
-        "Python",
-        "Django",
-        "REST APIs",
-        "MVC Architecture",
-        "Web Development"
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "Tailwind CSS",
+        "Bootstrap"
       ]
     },
     {
@@ -311,26 +311,26 @@
       ]
     },
     {
-      "title": "Web Development Intern",
-      "company": "Abun.com",
-      "duration": "Jan 2025 \u2013 Jun 2025",
-      "location": "Remote",
+      "title": "Software Development Intern",
+      "company": "A2IT Online",
+      "duration": "6 Months (2023)",
+      "location": "Remote / Chandigarh-based Company",
       "type": "Internship",
-      "description": "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
+      "description": "Completed a structured Full Stack Development Internship focused on Python, Django, and REST API frameworks.",
       "achievements": [
-        "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
-        "Implemented responsive interfaces and reusable UI components using React.js, Tailwind CSS, and Bootstrap.",
-        "Supported backend development tasks using Node.js and Express.js, ensuring smooth data flow between server and frontend.",
-        "Collaborated with product managers and senior engineers to develop, test, and deploy new features.",
-        "Conducted performance audits and implemented optimization techniques, resulting in faster page load times and better API efficiency.",
-        "Actively participated in agile sprints, code reviews, and documentation updates to maintain software consistency."
+        "Completed a structured Full Stack Development Internship focused on Python, Django, and REST API frameworks.",
+        "Developed multi-tiered web applications that included backend APIs, frontend integration, and authentication systems.",
+        "Collaborated with senior mentors to refine code quality, improve performance, and follow software development best practices.",
+        "Applied MVC architecture principles to design modular, maintainable systems.",
+        "Participated in debugging sessions, resolving UI inconsistencies, and testing database connectivity.",
+        "Strengthened practical understanding of software lifecycles, agile development, and cloud deployment workflows."
       ],
       "technologies": [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "Tailwind CSS",
-        "Bootstrap"
+        "Python",
+        "Django",
+        "REST APIs",
+        "MVC Architecture",
+        "Web Development"
       ]
     },
     {
