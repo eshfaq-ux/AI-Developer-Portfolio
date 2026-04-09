@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useScrollAnimation, animationVariants, getStaggerDelay } from '@/hooks/useScrollAnimation'
 
@@ -8,6 +8,7 @@ const Testimonials = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ triggerOnce: true })
   const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ triggerOnce: true })
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   const testimonials = [
     {
@@ -72,6 +73,17 @@ const Testimonials = () => {
     }
   ]
 
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    if (isPaused) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isPaused, testimonials.length])
+
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
   }
@@ -109,7 +121,12 @@ const Testimonials = () => {
         </div>
 
         {/* Desktop: Sliding Carousel */}
-        <div className="hidden lg:block relative" ref={cardsRef}>
+        <div 
+          className="hidden lg:block relative" 
+          ref={cardsRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="flex gap-8 max-w-7xl mx-auto">
             {getVisibleTestimonials().map((testimonial, index) => (
               <div
