@@ -3,14 +3,20 @@ import { ReactNode } from 'react'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Ashfaq - Full Stack Developer & Prompt Engineer',
-  description: 'Experienced Full Stack Developer specializing in MERN stack development and AI automation. Expert in Prompt Engineering, SaaS Development, and Workflow Automation.',
-  keywords: ['Full Stack Developer', 'Prompt Engineer', 'MERN Stack', 'AI Automation', 'SaaS Development', 'Workflow Automation', 'React', 'Node.js', 'OpenAI'],
-  authors: [{ name: 'Ashfaq' }],
+  title: 'Ashfaq Nabi - Full Stack Developer & AI Engineer',
+  description: 'Experienced Full Stack Developer with 2 years of expertise in MERN stack, AI automation, and SaaS development. 12+ projects delivered with 95% client satisfaction.',
+  keywords: ['Full Stack Developer', 'MERN Stack', 'React Developer', 'Node.js', 'AI Automation', 'Ashfaq Nabi'],
+  authors: [{ name: 'Ashfaq Nabi' }],
   openGraph: {
-    title: 'Ashfaq - Full Stack Developer & Prompt Engineer',
-    description: 'Building AI-Powered SaaS Solutions & Workflow Automation',
+    title: 'Ashfaq Nabi - Full Stack Developer',
+    description: 'Building AI-Powered SaaS Solutions. 2 years experience, 12+ projects delivered.',
     type: 'website',
+    images: ['/1681207343598.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ashfaq Nabi - Full Stack Developer',
+    images: ['/1681207343598.jpg'],
   },
   robots: {
     index: true,
@@ -32,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://prod.spline.design" />
         <link rel="dns-prefetch" href="https://prod.spline.design" />
         <link rel="preload" href="/hero-3d-fallback.jpg" as="image" />
@@ -44,17 +51,13 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Performance monitoring
               if (typeof window !== 'undefined') {
                 window.addEventListener('load', () => {
-                  // Measure Core Web Vitals
                   setTimeout(() => {
                     const navigation = performance.getEntriesByType('navigation')[0];
                     if (navigation) {
                       console.log('Load Time:', navigation.loadEventEnd - navigation.loadEventStart + 'ms');
                     }
-                    
-                    // Measure LCP
                     new PerformanceObserver((list) => {
                       const entries = list.getEntries();
                       const lastEntry = entries[entries.length - 1];

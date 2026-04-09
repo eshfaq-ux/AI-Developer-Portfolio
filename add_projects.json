@@ -1,0 +1,81 @@
+,
+    {
+      "id": 5,
+      "title": "ATS Resume Builder",
+      "description": "Built an AI-powered resume builder with ATS optimization, real-time preview, and multiple template options. Integrated OpenAI for content suggestions and keyword optimization.",
+      "tech": ["React.js", "Node.js", "OpenAI API", "MongoDB"],
+      "impact": "Helps job seekers create ATS-friendly resumes with AI assistance",
+      "github": "https://github.com/eshfaq-ux/ats-resume-builder",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "Blackcoffer Dashboard",
+      "description": "Developed an interactive data visualization dashboard with multiple chart types, filters, and real-time data updates. Implemented dark/light theme toggle and responsive design.",
+      "tech": ["React.js", "Node.js", "MongoDB", "Chart.js"],
+      "impact": "Visualizes complex data insights for business intelligence",
+      "github": "https://github.com/eshfaq-ux/blackcoffer-dashboard",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "title": "Real-Time Chat Application",
+      "description": "Built a real-time messaging platform with Socket.io, featuring private chats, group conversations, file sharing, and online status indicators.",
+      "tech": ["React.js", "Node.js", "Socket.io", "MongoDB"],
+      "impact": "Supports 100+ concurrent users with real-time messaging",
+      "github": "https://github.com/eshfaq-ux/chat-app",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "title": "E-Commerce Platform",
+      "description": "Developed a full-featured e-commerce platform with product management, shopping cart, payment integration (Stripe), and order tracking system.",
+      "tech": ["React.js", "Node.js", "MongoDB", "Stripe"],
+      "impact": "Complete online shopping solution with secure payments",
+      "github": "https://github.com/eshfaq-ux/my-ecommerce-platform",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 9,
+      "title": "LinkedIn Automation Tool",
+      "description": "Created an automation tool for LinkedIn profile management, connection requests, and messaging. Implemented stealth mode and rate limiting to avoid detection.",
+      "tech": ["Go", "Chromium", "REST APIs"],
+      "impact": "Automates LinkedIn networking tasks efficiently",
+      "github": "https://github.com/eshfaq-ux/linkedin-automation",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 10,
+      "title": "AI TestCase Generator",
+      "description": "Built an AI-powered tool that automatically generates test cases from code. Integrated with VS Code extension for seamless developer experience.",
+      "tech": ["React.js", "Node.js", "OpenAI API", "PostgreSQL"],
+      "impact": "Reduces testing time by 60% with AI-generated test cases",
+      "github": "https://github.com/eshfaq-ux/ai-testcase-generator",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 11,
+      "title": "YouTube Downloader",
+      "description": "Developed a web application for downloading YouTube videos in multiple formats and qualities. Implemented queue system for batch downloads.",
+      "tech": ["React.js", "Node.js", "Python", "FFmpeg"],
+      "impact": "User-friendly video download solution",
+      "github": "https://github.com/eshfaq-ux/youtube-downloader",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 12,
+      "title": "Task Analyzer Dashboard",
+      "description": "Created an AI-powered task analysis tool that categorizes and prioritizes tasks. Features include PDF export, analytics, and team collaboration.",
+      "tech": ["React.js", "Node.js", "OpenAI API", "MongoDB"],
+      "impact": "Improves team productivity with intelligent task management",
+      "github": "https://github.com/eshfaq-ux/task-analyzer",
+      "demo": "#",
+      "featured": false
+    }

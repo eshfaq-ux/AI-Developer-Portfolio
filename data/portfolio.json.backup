@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Ashfaq Nabi",
-    "title": "Full Stack Developer | React.js \u2022 Node.js \u2022 Java",
+    "title": "Full Stack Developer | React.js • Node.js • Java",
     "tagline": "Building AI-Powered SaaS Solutions & Workflow Automation",
     "email": "eshfaqnabi11@gmail.com",
     "phone": "+916006331941",
@@ -11,89 +11,21 @@
     "location": "Srinagar, India"
   },
   "about": {
-    "description": "Innovative and results-driven Software Developer with a strong academic foundation and 2 years of combined internship and freelance experience in full-stack web development, backend systems, and software engineering. Proficient in building high-performance, scalable web applications using React.js, Node.js, Express.js, MongoDB, and Spring Boot, with strong knowledge of Java, OOP principles, and RESTful API design. Holds a Master of Computer Applications (MCA, 2023) from BGSB University, achieving academic excellence with a CGPA of 8.50. Adept at applying modern development practices, integrating cloud and AI-driven tools, and designing reliable software architectures that meet real-world business needs. Motivated to work in dynamic IT environments where innovation, learning, and impact converge \u2014 with a strong interest in backend engineering, cloud-based deployment, and intelligent automation.",
-    "keywords": [
-      "Full Stack Development",
-      "React.js",
-      "Node.js",
-      "JavaScript",
-      "TypeScript",
-      "MongoDB",
-      "PostgreSQL",
-      "REST APIs",
-      "GraphQL",
-      "Docker",
-      "Git",
-      "TailwindCSS",
-      "Next.js",
-      "Express.js",
-      "Firebase",
-      "Redis",
-      "CI/CD",
-      "Performance Optimization"
-    ]
+    "description": "Innovative and results-driven Software Developer with a strong academic foundation and 2 years of combined internship and freelance experience in full-stack web development, backend systems, and software engineering. Proficient in building high-performance, scalable web applications using React.js, Node.js, Express.js, MongoDB, and Spring Boot, with strong knowledge of Java, OOP principles, and RESTful API design. Holds a Master of Computer Applications (MCA, 2023) from BGSB University, achieving academic excellence with a CGPA of 8.50. Adept at applying modern development practices, integrating cloud and AI-driven tools, and designing reliable software architectures that meet real-world business needs. Motivated to work in dynamic IT environments where innovation, learning, and impact converge — with a strong interest in backend engineering, cloud-based deployment, and intelligent automation.",
+    "keywords": ["Full Stack Development", "React.js", "Node.js", "JavaScript", "TypeScript", "MongoDB", "PostgreSQL", "REST APIs", "GraphQL", "Docker", "Git", "TailwindCSS", "Next.js", "Express.js", "Firebase", "Redis", "CI/CD", "Performance Optimization"]
   },
   "skills": {
-    "ai_ml": [
-      "Prompt Engineering",
-      "OpenAI GPT",
-      "LangChain",
-      "Hugging Face",
-      "TensorFlow",
-      "Machine Learning",
-      "Natural Language Processing",
-      "AI Chatbots"
-    ],
-    "programming": [
-      "Java",
-      "JavaScript",
-      "Python",
-      "SQL",
-      "HTML",
-      "CSS",
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Spring Boot",
-      "Django",
-      "Bootstrap"
-    ],
-    "tools": [
-      "MongoDB",
-      "MySQL",
-      "PostgreSQL",
-      "AWS",
-      "Vercel",
-      "Render",
-      "Git",
-      "GitHub",
-      "Postman",
-      "VS Code",
-      "Eclipse",
-      "Figma"
-    ],
-    "automation": [
-      "n8n",
-      "Zapier",
-      "Make.com",
-      "Workflow Automation",
-      "API Integration",
-      "Process Optimization",
-      "Business Intelligence"
-    ]
+    "ai_ml": ["Prompt Engineering", "OpenAI GPT", "LangChain", "Hugging Face", "TensorFlow", "Machine Learning", "Natural Language Processing", "AI Chatbots"],
+    "programming": ["Java", "JavaScript", "Python", "SQL", "HTML", "CSS", "React.js", "Node.js", "Express.js", "Spring Boot", "Django", "Bootstrap"],
+    "tools": ["MongoDB", "MySQL", "PostgreSQL", "AWS", "Vercel", "Render", "Git", "GitHub", "Postman", "VS Code", "Eclipse", "Figma"],
+    "automation": ["n8n", "Zapier", "Make.com", "Workflow Automation", "API Integration", "Process Optimization", "Business Intelligence"]
   },
   "projects": [
     {
       "id": 1,
-      "title": "LinkVault \u2013 URL Shortening Service",
+      "title": "LinkVault – URL Shortening Service",
       "description": "Developed a secure, scalable URL shortening platform with analytics, authentication, and user dashboards. Designed and implemented RESTful APIs for user registration, URL generation, and usage statistics. Integrated JWT-based authentication for user access control and session management. Delivered an interactive frontend interface using React.js and Chart.js for tracking link performance.",
-      "tech": [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "React.js",
-        "JWT"
-      ],
+      "tech": ["Node.js", "Express.js", "MongoDB", "React.js", "JWT"],
       "impact": "Built scalable URL shortening platform with 95% uptime, supporting unlimited users with enterprise security features",
       "github": "https://gitlab.com/eshfaqnabi11/linkvault",
       "demo": "https://linkvault-two.vercel.app/",
@@ -103,12 +35,7 @@
       "id": 2,
       "title": "Workflow Automation System",
       "description": "Designed and deployed an intelligent process automation tool connecting APIs for repetitive business workflows. Integrated third-party services (Google Sheets, CRMs, and Notion) for real-time synchronization. Reduced operational time by up to 35% through workflow optimization. Delivered cloud-based architecture ensuring scalability and minimal latency.",
-      "tech": [
-        "Node.js",
-        "n8n",
-        "MongoDB",
-        "REST APIs"
-      ],
+      "tech": ["Node.js", "n8n", "MongoDB", "REST APIs"],
       "impact": "Reduced operational costs by 35% for 50+ companies",
       "github": "https://github.com/eshfaq-ux/workflow-automation",
       "demo": "#",
@@ -118,11 +45,7 @@
       "id": 3,
       "title": "AI-Powered Resume Builder (Capstone Project)",
       "description": "Conceptualized and developed an AI-driven web platform that automatically generates keyword-optimized resumes. Implemented backend logic for user data parsing and content generation using OpenAI API. Designed a dynamic, responsive UI for real-time resume previews. Delivered this as a final-year project during MCA, achieving top academic evaluation.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "OpenAI API"
-      ],
+      "tech": ["React.js", "Node.js", "OpenAI API"],
       "impact": "Achieved 95% accuracy across multiple deployments",
       "github": "https://github.com/eshfaq-ux/ai-resume-builder",
       "demo": "#",
@@ -132,132 +55,10 @@
       "id": 4,
       "title": "Personal Portfolio Website",
       "description": "Created and deployed a responsive developer portfolio highlighting projects, certifications, and skills. Applied SEO best practices, optimized image rendering, and ensured cross-device compatibility. Integrated contact form APIs for automated response handling.",
-      "tech": [
-        "React.js",
-        "Tailwind CSS"
-      ],
+      "tech": ["React.js", "Tailwind CSS"],
       "impact": "Professional portfolio showcasing technical expertise and project achievements",
       "github": "https://github.com/eshfaq-ux/portfolio",
-      "demo": "https://ai-developer-portfolio-ten.vercel.app",
-      "featured": false
-    },
-    {
-      "id": 5,
-      "title": "ATS Resume Builder",
-      "description": "Built an AI-powered resume builder with ATS optimization, real-time preview, and multiple template options. Integrated OpenAI for content suggestions and keyword optimization.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "OpenAI API",
-        "MongoDB"
-      ],
-      "impact": "Helps job seekers create ATS-friendly resumes with AI assistance",
-      "github": "https://github.com/eshfaq-ux/ats-resume-builder",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 6,
-      "title": "Blackcoffer Dashboard",
-      "description": "Developed an interactive data visualization dashboard with multiple chart types, filters, and real-time data updates. Implemented dark/light theme toggle and responsive design.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "MongoDB",
-        "Chart.js"
-      ],
-      "impact": "Visualizes complex data insights for business intelligence",
-      "github": "https://github.com/eshfaq-ux/blackcoffer-dashboard",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 7,
-      "title": "Real-Time Chat Application",
-      "description": "Built a real-time messaging platform with Socket.io, featuring private chats, group conversations, file sharing, and online status indicators.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "Socket.io",
-        "MongoDB"
-      ],
-      "impact": "Supports 100+ concurrent users with real-time messaging",
-      "github": "https://github.com/eshfaq-ux/chat-app",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 8,
-      "title": "E-Commerce Platform",
-      "description": "Developed a full-featured e-commerce platform with product management, shopping cart, payment integration (Stripe), and order tracking system.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "MongoDB",
-        "Stripe"
-      ],
-      "impact": "Complete online shopping solution with secure payments",
-      "github": "https://github.com/eshfaq-ux/my-ecommerce-platform",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 9,
-      "title": "LinkedIn Automation Tool",
-      "description": "Created an automation tool for LinkedIn profile management, connection requests, and messaging. Implemented stealth mode and rate limiting to avoid detection.",
-      "tech": [
-        "Go",
-        "Chromium",
-        "REST APIs"
-      ],
-      "impact": "Automates LinkedIn networking tasks efficiently",
-      "github": "https://github.com/eshfaq-ux/linkedin-automation",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 10,
-      "title": "AI TestCase Generator",
-      "description": "Built an AI-powered tool that automatically generates test cases from code. Integrated with VS Code extension for seamless developer experience.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "OpenAI API",
-        "PostgreSQL"
-      ],
-      "impact": "Reduces testing time by 60% with AI-generated test cases",
-      "github": "https://github.com/eshfaq-ux/ai-testcase-generator",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 11,
-      "title": "YouTube Downloader",
-      "description": "Developed a web application for downloading YouTube videos in multiple formats and qualities. Implemented queue system for batch downloads.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "Python",
-        "FFmpeg"
-      ],
-      "impact": "User-friendly video download solution",
-      "github": "https://github.com/eshfaq-ux/youtube-downloader",
-      "demo": "#",
-      "featured": false
-    },
-    {
-      "id": 12,
-      "title": "Task Analyzer Dashboard",
-      "description": "Created an AI-powered task analysis tool that categorizes and prioritizes tasks. Features include PDF export, analytics, and team collaboration.",
-      "tech": [
-        "React.js",
-        "Node.js",
-        "OpenAI API",
-        "MongoDB"
-      ],
-      "impact": "Improves team productivity with intelligent task management",
-      "github": "https://github.com/eshfaq-ux/task-analyzer",
-      "demo": "#",
+      "demo": "https://ashfaq-portfolio.vercel.app",
       "featured": false
     }
   ],
@@ -277,18 +78,12 @@
         "Participated in debugging sessions, resolving UI inconsistencies, and testing database connectivity.",
         "Strengthened practical understanding of software lifecycles, agile development, and cloud deployment workflows."
       ],
-      "technologies": [
-        "Python",
-        "Django",
-        "REST APIs",
-        "MVC Architecture",
-        "Web Development"
-      ]
+      "technologies": ["Python", "Django", "REST APIs", "MVC Architecture", "Web Development"]
     },
     {
       "title": "Freelance Full Stack Developer",
       "company": "Freelance",
-      "duration": "Jan 2024 \u2013 Present",
+      "duration": "Jan 2024 – Present",
       "location": "Remote",
       "type": "Freelance",
       "description": "Designed and delivered end-to-end web applications for startups and entrepreneurs using the MERN stack.",
@@ -300,20 +95,12 @@
         "Enhanced debugging, refactoring, and testing processes through iterative real-world deployments.",
         "Developed strong project management, communication, and remote collaboration skills while working directly with clients."
       ],
-      "technologies": [
-        "MERN Stack",
-        "MongoDB",
-        "Express.js",
-        "React.js",
-        "Node.js",
-        "AWS",
-        "Vercel"
-      ]
+      "technologies": ["MERN Stack", "MongoDB", "Express.js", "React.js", "Node.js", "AWS", "Vercel"]
     },
     {
       "title": "Web Development Intern",
       "company": "Abun.com",
-      "duration": "Jan 2025 \u2013 Jun 2025",
+      "duration": "Jan 2025 – Jun 2025",
       "location": "Remote",
       "type": "Internship",
       "description": "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
@@ -325,13 +112,7 @@
         "Conducted performance audits and implemented optimization techniques, resulting in faster page load times and better API efficiency.",
         "Actively participated in agile sprints, code reviews, and documentation updates to maintain software consistency."
       ],
-      "technologies": [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "Tailwind CSS",
-        "Bootstrap"
-      ]
+      "technologies": ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap"]
     },
     {
       "title": "Master of Computer Applications (MCA)",
@@ -344,18 +125,11 @@
         "Achieved academic excellence with CGPA of 8.50",
         "Specialized in Full Stack Development, Cloud Computing, and Artificial Intelligence",
         "Coursework Highlights: Advanced Java Programming, Software Engineering, Web Technologies, Cloud Architecture, Data Science, Machine Learning, Database Management Systems",
-        "Capstone Project: AI-Powered Resume Builder \u2014 developed using React.js, Node.js, and OpenAI API integration",
+        "Capstone Project: AI-Powered Resume Builder — developed using React.js, Node.js, and OpenAI API integration",
         "Contributed to research seminars on cloud deployment automation and AI-assisted code generation",
         "Achieved consistent academic distinction across all semesters and received faculty commendations for innovation and code efficiency"
       ],
-      "technologies": [
-        "Java",
-        "React.js",
-        "Node.js",
-        "OpenAI API",
-        "Cloud Computing",
-        "Machine Learning"
-      ]
+      "technologies": ["Java", "React.js", "Node.js", "OpenAI API", "Cloud Computing", "Machine Learning"]
     },
     {
       "title": "Bachelor of Computer Applications (BCA)",
@@ -371,15 +145,7 @@
         "Final-year project: Online Attendance Management System using PHP and MySQL, focusing on data integrity and efficient record retrieval",
         "Developed analytical and coding proficiency essential for real-world software projects"
       ],
-      "technologies": [
-        "C",
-        "C++",
-        "Java",
-        "PHP",
-        "MySQL",
-        "Data Structures",
-        "DBMS"
-      ]
+      "technologies": ["C", "C++", "Java", "PHP", "MySQL", "Data Structures", "DBMS"]
     }
   ],
   "certifications": [
