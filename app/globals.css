@@ -184,3 +184,63 @@ html {
     }
   }
 }
+
+/* Dark Mode Styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark section {
+  background-color: #111827 !important;
+}
+
+.dark .bg-white {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #1f2937 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #374151 !important;
+}
+
+.dark .text-gray-900 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-gray-800 {
+  color: #e5e7eb !important;
+}
+
+.dark .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+.dark .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark .border-gray-100 {
+  border-color: #374151 !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #4b5563 !important;
+}
+
+.dark nav {
+  background-color: rgba(17, 24, 39, 0.9) !important;
+}
+
+.dark footer {
+  background-color: #111827 !important;
+  border-color: #1f2937 !important;
+}
