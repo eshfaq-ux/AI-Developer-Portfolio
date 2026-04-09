@@ -10,6 +10,7 @@ import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
 import AIChatbot from '@/components/AIChatbot'
+import DarkModeToggle from '@/components/DarkModeToggle'
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       </main>
       <Footer />
       <AIChatbot />
+      <DarkModeToggle />
     </>
   )
 }

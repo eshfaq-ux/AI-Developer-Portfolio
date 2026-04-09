@@ -1,0 +1,16 @@
+{
+  "name": "Ashfaq Nabi - Full Stack Developer",
+  "short_name": "Ashfaq Portfolio",
+  "description": "Full Stack Developer specializing in MERN stack and AI integration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4F46E5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
