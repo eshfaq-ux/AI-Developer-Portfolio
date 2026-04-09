@@ -11,7 +11,7 @@
     "location": "Srinagar, India"
   },
   "about": {
-    "description": "Innovative and results-driven Software Developer with a strong academic foundation and 2 years of combined internship and freelance experience in full-stack web development, backend systems, and software engineering. Proficient in building high-performance, scalable web applications using React.js, Node.js, Express.js, MongoDB, and Spring Boot, with strong knowledge of Java, OOP principles, and RESTful API design. Holds a Master of Computer Applications (MCA, 2023) from BGSB University, achieving academic excellence with a CGPA of 8.50. Adept at applying modern development practices, integrating cloud and AI-driven tools, and designing reliable software architectures that meet real-world business needs. Motivated to work in dynamic IT environments where innovation, learning, and impact converge \u2014 with a strong interest in backend engineering, cloud-based deployment, and intelligent automation.",
+    "description": "Innovative and results-driven Software Developer with a strong academic foundation and 2 years of combined internship and freelance experience (A2IT: 6 months in 2023, Freelance: 1 year 2024, Abun.com: 6 months 2025). Currently seeking new opportunities in full-stack web development, backend systems, and software engineering. Proficient in building high-performance, scalable web applications using React.js, Node.js, Express.js, MongoDB, and Spring Boot, with strong knowledge of Java, OOP principles, and RESTful API design. Holds a Master of Computer Applications (MCA, 2023) from BGSB University, achieving academic excellence with a CGPA of 8.50. Adept at applying modern development practices, integrating cloud and AI-driven tools, and designing reliable software architectures that meet real-world business needs. Motivated to work in dynamic IT environments where innovation, learning, and impact converge \u2014 with a strong interest in backend engineering, cloud-based deployment, and intelligent automation.",
     "keywords": [
       "Full Stack Development",
       "React.js",
@@ -288,7 +288,7 @@
     {
       "title": "Freelance Full Stack Developer",
       "company": "Freelance",
-      "duration": "Jan 2024 \u2013 Present",
+      "duration": "Jan 2024 \u2013 Dec 2024",
       "location": "Remote",
       "type": "Freelance",
       "description": "Designed and delivered end-to-end web applications for startups and entrepreneurs using the MERN stack.",
